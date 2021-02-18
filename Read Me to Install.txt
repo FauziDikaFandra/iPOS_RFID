@@ -1,0 +1,4 @@
+1. install setup.exe dalam folder windows
+   untuk driver fingerprint
+2. install iPOS setup
+3. copy iPOS.exe terbaru

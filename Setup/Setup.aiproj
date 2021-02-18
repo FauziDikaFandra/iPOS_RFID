@@ -1,0 +1,38 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">All</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>de6d2e8c-c30c-4ce4-a1d6-447d42d98d61</ProjectGuid>
+    <OutputType>msi</OutputType>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>Setup.aip</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <IsWindowsApplication>True</IsWindowsApplication>
+    <AssemblyName>Setup</AssemblyName>
+    <Name>Setup</Name>
+    <RootNamespace>Setup</RootNamespace>
+    <LoadFromTemplate>
+    </LoadFromTemplate>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'DefaultBuild' " />
+  <ItemGroup>
+    <Compile Include="Setup.aip">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\iPOS\iPOS.vbproj">
+      <Name>iPOS</Name>
+      <Project>{b82113c3-2e6b-44d4-bf81-c1b954ed1c61}</Project>
+      <Private>True</Private>
+      <OutputsToImport>PrimaryOutput;ContentOutput;References;DocumentationOutput;LocalizedResourcesOutput;SymbolsOutput;ComTypeLibraryOutput</OutputsToImport>
+    </ProjectReference>
+  </ItemGroup>
+  <Target Name="Build">
+    <Error Text="This project requires Advanced Installer tool. Please download it from https://www.advancedinstaller.com/download.html" />
+  </Target>
+  <Import Condition="'$(AdvancedInstallerMSBuildTargets)' != ''" Project="$(AdvancedInstallerMSBuildTargets)\AdvInstExtTasks.Targets" />
+  <Import Condition="('$(AdvancedInstallerMSBuildTargets)' == '') And (Exists('$(MSBuildExtensionsPath32)\Caphyon\Advanced Installer\AdvInstExtTasks.Targets'))" Project="$(MSBuildExtensionsPath32)\Caphyon\Advanced Installer\AdvInstExtTasks.Targets" />
+</Project>
